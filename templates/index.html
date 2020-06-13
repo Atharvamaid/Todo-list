@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Schedulist</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='brand2.ico') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <style media="screen">
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .container-fluid{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../static/back.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 700px;
+
+  }
+  .container-fluid h1{
+    position: relative;
+    top: 20%;
+    font-family: cursive;
+
+  }
+.container-fluid h2{
+  position: relative;
+  top: 25%;
+}
+
+
+       ul li{
+      margin-left: 10px;
+      margin-right: 10px;
+      }
+
+       ul li a{
+        padding: 5px 10px 5px 10px ;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 18px;
+      }
+
+button{
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70px;
+  width: 250px;
+  font-size: 30px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  font-family: cursive;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+button a{
+  color: white;
+  width: 100%;
+}
+button:hover{
+  color: black;
+  background-color: rgb(217, 217, 217);
+  text-decoration: none;
+
+}
+
+
+
+  </style>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-light navbar-light ">
+    <a href="{{ url_for('home') }}" class="navbar-brand p-1 font-weight-bold text-dark"><img src="{{ url_for('static', filename='brand2.png') }}" height="80px"></a>
+  <button type="button" name="button" class="navbar-toggler" data-target="#navbarresponse" data-toggle="collapse"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id = "navbarresponse">
+    <ul class="navbar-nav ml-auto">
+  <li class="nav-item p-1 ml-1  mr-1"><a href="{{ url_for('home') }}" class="nav-link active ">Home</a></li>
+  <li class="nav-item p-1 ml-1  mr-1"><a href="{{ url_for('login') }}" class="nav-link ">Login</a></li>
+  <li class="nav-item p-1 ml-1 mr-1"><a href="{{ url_for('register') }}" class="nav-link btn btn-primary text-white shadow">Sign-Up</a></li>
+    </ul>
+  </div>
+  </nav>
+<div class="container-fluid">
+    <h1 class="font-weight-bold text-white text-center display-1">Organise it all with schedulist </h1>
+    <h2 class="text-white text-center">Your busy life deserves this</h2>
+
+    <button type="button" name="button" onclick="window.location.href='{{ url_for('login') }}';">Get-Started</button>
+</div>
+
+</body>
+</html>

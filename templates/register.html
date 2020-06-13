@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Schedulist</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='brand2.ico') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-light navbar-light ">
+    <a href="{{ url_for('home') }}" class="navbar-brand p-1 font-weight-bold text-dark"><img src="{{ url_for('static', filename='brand2.png') }}" height="80px"></a>
+  <button type="button" name="button" class="navbar-toggler" data-target="#navbarresponse" data-toggle="collapse"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id = "navbarresponse">
+    <ul class="navbar-nav ml-auto">
+  <li class="nav-item p-1 ml-1  mr-1"><a href="{{ url_for('home') }}" class="nav-link active ">Home</a></li>
+  <li class="nav-item p-1 ml-1  mr-1"><a href="{{ url_for('login') }}" class="nav-link ">Login</a></li>
+  <li class="nav-item p-1 ml-1 mr-1"><a href="{{ url_for('register') }}" class="nav-link btn btn-primary text-white shadow">Sign-Up</a></li>
+    </ul>
+  </div>
+  </nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-6">
+            {% with messages= get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category,message in messages %}
+                            <div class="alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            <fieldset>
+                <legend>Register : </legend>
+            <form class="form mt-2 needs-validation" method="POST" action="" name="myform" novalidate>
+                <div class="form-group">
+                    <label for="user">Username</label>
+                    <input class="form-control" id="user" name="username" placeholder="Enter username :" type="text" required>
+                    <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email : </label>
+                    <input class="form-control" id="email" name="emaill" placeholder="Enter email :" type="text"  required>
+                    <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input class="form-control" id="pass" name="password" placeholder="Enter password :" type="password"  min="5" max="20" required>
+                    <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm-Password</label>
+                    <input class="form-control" id="confirm" name="confirm-pass" placeholder="Confirm Password :" type="password" onkeyup="check();" required>
+                    <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+                    <small id="message"></small>
+                </div>
+                <div class="form-group d-flex justify-content-center mt-3">
+                    <input type="submit" name="sub" class="btn btn-primary mt-3 btn-lg" id="butt" value="Register">
+                </div>
+                <small>Already have an account ? <a href="{{ url_for('login') }}" style='text-decoration:none;'>Login</a></small>
+            </form>
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+</div>
+    <script>
+        var check = function() {
+            if (document.getElementById('pass').value ==
+    document.getElementById('confirm').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+    </script>
+
+
+<script>
+// Disable form submissions if there are invalid fields
+ (function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</body>
+</html>
